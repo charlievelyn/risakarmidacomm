@@ -9,11 +9,8 @@
     {{-- Style --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;300;600;900&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/lineicons.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Ovo&display=swap" rel="stylesheet">
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     {{-- Logo Title --}}
     <link rel="icon" href="{{ asset('images/logo_small.png') }}" type="image/x-icon">
@@ -31,9 +28,5 @@
 
     {{-- Content --}}
     @yield('content')
-
-    {{-- Scripts --}}
-    <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/custom.js') }}"></script>
 </body>
 </html>
