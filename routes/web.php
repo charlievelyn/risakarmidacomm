@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EditorController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\Auth\LoginController;
 
@@ -24,13 +25,16 @@ use App\Http\Controllers\Auth\LoginController;
 // require __DIR__.'/auth.php';
 
 Route::get('/', [PagesController::class, 'index']);
+Route::get('/articles', [PagesController::class, 'articles']);
+Route::get('/editor', [EditorController::class, 'show'])->name('editor');
+Route::post('/save', [EditorController::class, 'save'])->name('save');
 
-Route::get('/dashboard', [PagesController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', [PagesController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+// Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+// Route::post('/login', [LoginController::class, 'login']);
+// Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

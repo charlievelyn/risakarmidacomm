@@ -1,3 +1,5 @@
+// vite.config.js
+
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
@@ -24,5 +26,8 @@ export default defineConfig({
         alias: {
             vue: 'vue/dist/vue.esm-bundler.js',
         },
+    },
+    optimizeDeps: {
+        include: ['dropzone', 'cropperjs'], // Include Dropzone.js and Cropper.js
     },
 });

@@ -1,48 +1,146 @@
-$primary-color: #eb8600;
-$secondary-color: #4b4b4d;
-$color-tosca: #00b7c0;
+$color-beige: #fae6b1; // 250, 230, 177
+$color-orangevivid: #ffa101; // 255, 161, 1
+$color-softblue: #b3dee5; // 179, 222, 229
+$color-slate: #31525b; // 49, 82, 91
 
-body {  
+$color-red: #E74C3C; // 128, 0, 32
+$color-burgundy: #800020;
+$color-deeporange: #FF5733;
+$color-darkgray: #333333;
+$color-darkblue: #1A1A4D;
+
+body {
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
-    font-size: 1.25em !important;
-    background-color: #fff;
+    font-size: 1em;
+    background-color: $color-softblue;
 }
 
 h1 {
-  font-family: "Ovo", sans-serif;
   font-weight: 900;
 }
 
+.offcanvas {
+  transition: none;
+}
+
+/* Navbar section */
+
+header#navbar-section {
+    background-color: rgba(250, 230, 177, 1);
+    height: 100px;
+    
+    // .transparent-bg {
+    //     background-color: rgba(250, 230, 177, 0.5);
+    // }
+
+    .navbar-image {
+        height: 80px;
+        width: auto;
+        float: left;
+    }
+
+    .navigation-section {
+        float: right;
+    }
+
+    ul {
+        li {
+            padding: 4px 20px;
+            font-weight: 600;
+        }
+
+        .active {
+            text-shadow: 2px 2px 4px #fff;
+        }
+
+        li:hover {
+            text-shadow: 2px 2px 4px #fff;
+        }
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 767.98px) {
+    header#navbar-section {
+        height: auto;
+        .navbar-image {
+            height: 50px;
+            float: none;
+        }
+        .navbar-toggler {
+            border: none;
+            &:focus {
+                outline: none;
+                box-shadow: none;
+            }
+        }
+        .navigation-section {
+            float: none;
+            color: $color-beige;
+            background-color: $color-orangevivid;
+        }
+        ul {
+            li {
+                border: 1px inset $color-beige;
+            }
+        }
+    }
+}
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) {
+    header#navbar-section {
+        .navbar-image {
+            height: 60px;
+        }
+        ul {
+            li {
+                padding: 4px 10px;
+                font-weight: 600;
+            }
+        }
+    }
+}
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    header#navbar-section {
+        .navbar-image {
+            height: 80px;
+        }
+    }
+}
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
+section#banner-section {
 /* Carousel base class */
-.carousel {
-  margin-bottom: 4rem;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  bottom: 3rem;
-  z-index: 10;
+    /* Since positioning the image, we need to help out the caption */
+    .carousel-caption {
+        bottom: 3rem;
+    }
+
+    /* Declare heights because of positioning of img element */
+    .carousel-item {
+        height: 32rem;
+    }
+
+    .carousel-item > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        height: 32rem;
+    }
 }
 
-/* Declare heights because of positioning of img element */
-.carousel-item {
-  height: 32rem;
-}
 
-.carousel-item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: 32rem;
-}
 
 .skew-c {
-  background: url('../assets/bg-orange.jpg');
+//   background: url('../assets/bg-orange.jpg');
+    background: $color-orangevivid;
+    padding: 10px 50px;
+    
   .separator {
     width:100%;
     height:50px;
@@ -50,17 +148,15 @@ h1 {
     background: linear-gradient(to left bottom, #fff 49%, orange 50%);
   }
   .content{
-    padding: 20px;
     width: 100%;
     border: 0;
     text-align: center;
     color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    // text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   .divider {
     display: table; 
-    font-size: 24px; 
     text-align: center; 
     width: 75%;
     margin: 40px auto;
@@ -106,6 +202,7 @@ h1 {
 
 .skew-cc{
   background: #fff;
+  padding: 10px 50px;
   .separator {
     width:100%;
     height:50px;
@@ -119,15 +216,15 @@ h1 {
     border: 0;
     text-align: center;
     color: #000;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    // text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   .divider {
     display: table; 
-    font-size: 24px; 
     text-align: center; 
     width: 75%;
-    margin: 40px auto;
+    margin-left: auto;
+    margin-right: auto;
 
     span { 
         display: table-cell; 
@@ -168,6 +265,35 @@ h1 {
   }
 }
 
+//our values
+.values-section {
+    .custom-card {
+        height: 100%;
+    }
+    
+    .card-body {
+        background-color: #fff;
+    }
+}
+
+//our training
+.training-section {
+    color: #fff;
+    .content {
+        overflow: hidden; /* Hide overflow */
+        transition: max-height 0.5s ease; /* Add smooth transition */
+    }
+
+    .expandable-content {
+        max-height: 0; /* Initially hide content */
+        overflow: hidden;
+        transition: max-height 0.5s ease; /* Add smooth transition */
+    }
+
+    .show-more-button {
+        max-height: 1000px; /* Adjust as needed */
+    }
+}
 
 //our team
     /* Flip animation */
@@ -208,84 +334,228 @@ h1 {
       margin: 0;
   }
 
-// Footer styles
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 50px 0;
-  
-  .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
+  //contact us
+  .contact-us {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
-      .footer-section {
-          width: 25%;
-          margin-bottom: 20px;
+    h2 {
+        margin-bottom: 10px;
+    }
 
-          h3 {
-              font-size: 20px;
-              margin-bottom: 15px;
-          }
+    p {
+        margin-bottom: 20px;
+    }
 
-          ul {
-              list-style-type: none;
-              padding: 0;
-              margin: 0;
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
 
-              li {
-                  margin-bottom: 10px;
-              }
-          }
-      }
+    li {
+        margin-bottom: 10px;
 
-      .social-media {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-top: 20px;
+        i {
+            margin-right: 10px;
+        }
+    }
+}
 
-          a {
-              margin: 0 10px;
-              color: #fff;
-              font-size: 20px;
-          }
-      }
-  }
+section#clients-section {
+    .logo-grid {
+        display: grid;
+        justify-content: space-between;
+        width: 100%;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-gap: 2vw;
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            height: 200px;
+            img {
+                width: 100%;
+                object-fit: scale-down;
+            }
+        }
+    }
 }
 
 
-// .divider {
-//     display: table; 
-//     font-size: 24px; 
-//     text-align: center; 
-//     width: 75%;
-//     margin: 40px auto;
+// Footer styles
+// footer {
+//   background-color: #333;
+//   color: #fff;
+//   padding: 50px 0;
+  
+//   .footer-content {
+//       display: flex;
+//       justify-content: space-between;
+//       align-items: flex-start;
+//       flex-wrap: wrap;
+
+//       .footer-section {
+//           width: 25%;
+//           margin-bottom: 20px;
+
+//           h3 {
+//               margin-bottom: 15px;
+//           }
+
+//           ul {
+//               list-style-type: none;
+//               padding: 0;
+//               margin: 0;
+
+//               li {
+//                   margin-bottom: 10px;
+//               }
+//           }
+//       }
+
+//       .social-media {
+//           display: flex;
+//           justify-content: center;
+//           align-items: center;
+//           margin-top: 20px;
+
+//           a {
+//               margin: 0 10px;
+//               color: #fff;
+//           }
+//       }
+//   }
 // }
-// .divider span { display: table-cell; position: relative; }
-// .divider span:first-child, .divider span:last-child {
-//     width: 50%;
-//     top: 20px;
-//     -moz-background-size: 100% 2px;
-//     background-size: 100% 2px;
-//     background-position: 0 0, 0 100%;
-//     background-repeat: no-repeat;
+
+
+/* Footer Area */
+.footer-area {
+    color: var(--light-white);
+    background-color: var(--light-blue);
+    font-weight: 600;
+    font-size: 12px;
+    width: 100%;
+}
+
+.footer-area .contact-social {
+    display: block;
+}
+
+.footer-area .contact-social h5 {
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.footer-area .contact-social ul {
+    display: inline-block;
+    position:relative;
+    left: -9px;
+    margin-top: 15px;
+}
+
+.footer-area .contact-social ul li {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.footer-area .contact-social ul li:last-child {
+    margin-right: 0;
+}
+
+.footer-area .contact-social ul li a {
+    color: #fff;
+    font-size: 28px;
+    position: relative;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    display: block;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.footer-area .contact-social ul li a span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -15px;
+    margin-top: -15px;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    display: block;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.footer-area .contact-social ul li a:hover .icon-1 {
+    top: -30px;
+}
+
+.footer-area .contact-social ul li a .icon-2 {
+    top: 75px;
+}
+
+.footer-area .contact-social ul li a:hover .icon-2 {
+    top: 15px;
+}
+
+.footer-area .contact-social ul li a:hover {
+    color: $color-slate;
+}
+
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000; /* Ensure it appears above other elements */
+  }
+
+
+/* Media Size */
+// // Extra small devices (phones, 576px and down)
+// @media (max-width: 575.98px) {
+//     // Your CSS styles for extra small devices here
 // }
-// .divider span:first-child {
-//     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(#fff));
-//     background-image: -webkit-linear-gradient(180deg, transparent, #fff);
-//     background-image: -moz-linear-gradient(180deg, transparent, #fff);
-//     background-image: -o-linear-gradient(180deg, transparent, #fff);
-//     background-image: linear-gradient(90deg, transparent, #fff);
+
+// // Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) and (max-width: 767.98px) {
+//     // Your CSS styles for small devices here
 // }
-// .divider span:nth-child(2) {
-//     color: #fff; padding: 0px 20px; width: auto; white-space: nowrap;
+
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) and (max-width: 991.98px) {
+//     // Your CSS styles for medium devices here
 // }
-// .divider span:last-child {
-//     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#000), to(transparent));
-//     background-image: -webkit-linear-gradient(180deg, #000, transparent);
-//     background-image: -moz-linear-gradient(180deg, #000, transparent);
-//     background-image: -o-linear-gradient(180deg, #000, transparent);
-//     background-image: linear-gradient(90deg, #000, transparent);
+
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) and (max-width: 1199.98px) {
+//     // Your CSS styles for large devices here
 // }
+
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) {
+//     // Your CSS styles for extra large devices here
+// }
+
+
+// articles
+main#articles {
+    background-color: red;
+    height: auto;
+    color: #fff;
+    .card-grid {
+        .card-grid-lg{
+          height: 560px;
+        }
+        .card-grid-sm{
+          height: calc(280px - calc(var(--bs-gutter-y) / 2));
+        }
+      }
+}

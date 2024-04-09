@@ -1,41 +1,73 @@
-<div class="container navbar-section">
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Offcanvas navbar</a>
-        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Notifications</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Switch account</a>
-            </li>
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Settings</a>
-            <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-            </li>
-        </ul>
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+<header id="navbar-section" class="navbar-section sticky-top">
+    {{-- <div class="fixed-top"> --}}
+        <div class="container brand-section py-2 text-center">
+            <img class="navbar-image" src="{{ asset('storage/asset/rkc_logo.png') }}" alt="" class="invert">
+            {{-- <p class="py-1">Training | Consulting | Agencies</p> --}}
         </div>
-    </div>
-    </nav>
+        <div class="container navbar-expand-md">
+            <nav class="navbar navbar-light">
+                <div class="container-fluid d-flex justify-content-center">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
+            <div class="navigation-section text-center mt-3 collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mx-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Clients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Training Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Articles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                    {{-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Company
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Blog</a></li>
+                            <li><a class="dropdown-item" href="#">About Us</a></li>
+                            <li><a class="dropdown-item" href="#">Contact us</a></li>
+                        </ul>
+                    </li> --}}
+                </ul>
+            </div>
+        </div>
+    {{-- </div> --}}
+</header>
+
+
+{{--
+<!-- Jquery needed -->
+    <script src="js/scripts.js"></script> --}}
+
+<!-- Function used to shrink nav bar removing paddings and adding black background -->
+    {{-- <script>
+        $(window).scroll(function() {
+            if ($(document).scrollTop() > 50) {
+                $('.nav').addClass('affix');
+                console.log("OK");
+            } else {
+                $('.nav').removeClass('affix');
+            }
+        });
+    </script>
+</div> --}}
+
+
 
     <!-- <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navbar">
         <a class="navbar-brand" href="#">Your Logo</a>
@@ -67,7 +99,6 @@
             </ul>
         </div>
     </nav> -->
-</div>
 <!-- 
 <div class="container-fluid" style="height: 2000px; padding-top: 70px;">
     Your page content here

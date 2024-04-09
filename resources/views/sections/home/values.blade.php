@@ -1,35 +1,28 @@
-<div class="container">
-    <div class="skew-cc">
-        @include('layouts.components.skewcc', [
-            'sectionheader' => 'Our Values',
-            'sectionparagraph' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, doloribus!'
-            ])
-            
-        <div class="row justify-content-center content">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card 1</h5>
-                        <p class="card-text">This is a sample card.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card 2</h5>
-                        <p class="card-text">This is another sample card.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card 3</h5>
-                        <p class="card-text">This is yet another sample card.</p>
-                    </div>
-                </div>
-            </div>
+<section>
+
+</section>
+<div class="container values-section">
+  <div class="skew-cc">
+      @include('layouts.components.skewcc', [
+          'sectionheader' => 'Our Values',
+          'sectionparagraph' => ''
+          ])
+  
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      @foreach($values as $value)
+      <div class="col">
+        <div class="card mb-4 rounded-4 shadow-md custom-card">
+          <div class="card-header py-3">
+            <img src="{{ asset('storage/values/' . $value['image']) }}" class="card-image card-img-top" alt="Image 2">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">{{ $value['title'] }}</h3>
+            <p class="card-text">{{ $value['description'] }}</p>
+          </div>
         </div>
+      </div>
+      @endforeach
     </div>
+    
+  </div>
 </div>

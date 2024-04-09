@@ -4,9 +4,19 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import $ from 'jquery';
+
+// Import Quill
+import Quill from 'quill';
+import Dropzone from 'dropzone';
+import Cropper from 'cropperjs';
+
 import 'bootstrap';
 import '@popperjs/core';
+import './custom'
 import { createApp } from 'vue';
+
+window.Quill = Quill;
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -36,5 +46,3 @@ import { createApp } from 'vue';
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
-
-app.mount('#app');

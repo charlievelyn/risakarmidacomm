@@ -1,10 +1,12 @@
-<div class="container">
-    <div class="skew-c">
-        @include('layouts.components.skewc', [
-            'sectionheader' => 'About Us',
-            'sectionparagraph' => 'RKCTrainings adalah penyedia pelatihan di bidang komunikasi untuk keperluan profesional, baik Perusahaan, Lembaga Pemerintah, maupun kelas regular untuk publik. RKCTrainings didirikan pada tahun 2019, di bawah legalitas PT Komunikasindo Media Prima. Pendiri adalah Risa Karmida, M.A., praktisi media & pengajar Perguruan Tinggi.'
-            ])
-            
-        <div class="row content"></div>
+<section id="about-section" class="section">
+    <div class="container">
+        <div class="skew-c">
+            @include('layouts.components.skewc', [
+                'sectionheader' => 'About Us',
+                'sectionparagraph' => 'RKCTrainings is a provider of communication training for professional purposes, serving both corporations, governmental institutions, and regular classes for the public. Founded in 2019 under the legal entity PT Komunikasindo Media Prima, RKCTrainings is led by Risa Karmida, M.A., a media practitioner and lecturer at universities.'
+                ])
+                
+            <div class="row content"></div>
+        </div>
     </div>
-</div>
+</section>
