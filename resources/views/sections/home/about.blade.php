@@ -1,4 +1,4 @@
-<section id="about-section" class="section">
+<section id="about-section" class="section reveal-section">
     <div class="container">
         <div class="skew-c">
             @include('layouts.components.skewc', [

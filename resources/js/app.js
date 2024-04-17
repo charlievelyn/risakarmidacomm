@@ -8,15 +8,24 @@ import $ from 'jquery';
 
 // Import Quill
 import Quill from 'quill';
+
+// Import Dropzone
 import Dropzone from 'dropzone';
 import Cropper from 'cropperjs';
 
+// Import Slick JS
+import 'slick-carousel/slick/slick.min.js';
+
 import 'bootstrap';
 import '@popperjs/core';
+import '@fortawesome/fontawesome-free/css/fontawesome.css';
+import '@fortawesome/fontawesome-free/css/solid.css';
 import './custom'
 import { createApp } from 'vue';
 
+window.$ = $;
 window.Quill = Quill;
+window.jQuery = $;
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin

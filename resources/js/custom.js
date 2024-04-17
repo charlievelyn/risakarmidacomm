@@ -24,31 +24,72 @@
 //     }
 // }
 
-// Call functions when the document is ready
+// // Call functions when the document is ready
 $(document).ready(function() {
-    // toggleMenu(); // Call toggleMenu function
-    // toggleNavbarTransparency(); // Call toggleNavbarTransparency function
+//     // toggleMenu(); // Call toggleMenu function
+//     // toggleNavbarTransparency(); // Call toggleNavbarTransparency function
 
-    // // Add event listener for scroll event
-    // window.addEventListener('scroll', toggleNavbarTransparency);
-    // $('.show-more-btn').click(function () {
-    //     var expandableContent = this.parentElement.querySelector('.expandable-content');
-    //     expandableContent.classList.toggle('show-more');
-    // });
+//     // // Add event listener for scroll event
+//     // window.addEventListener('scroll', toggleNavbarTransparency);
+//     // $('.show-more-btn').click(function () {
+//     //     var expandableContent = this.parentElement.querySelector('.expandable-content');
+//     //     expandableContent.classList.toggle('show-more');
+//     // });
+    const reveals = document.querySelectorAll('.reveal-section');
+    const windowHeight = window.innerHeight;
 
-    $(window).scroll(function() {
-        var navbar = $('.navbar-section');
-        var scrollPosition = $(window).scrollTop();
+    for (let i = 0; i < reveals.length; i++) {
+        let revealTop = reveals[i].getBoundingClientRect().top;
+        let revealBottom = reveals[i].getBoundingClientRect().bottom;
 
-        if(scrollPosition > 0){
-            navbar.addClass('transparent-bg');
-        } else {
-            navbar.removeClass('transparent-bg');
+        if (revealTop >= 0 && revealBottom <= windowHeight) {
+            // Check if the entire div is covered within the screen
+            if (revealTop >= 0 && revealBottom <= windowHeight) {
+                reveals[i].classList.add('flying-section');
+            }
+        }
+    }
+
+    // Whatsapp transition
+    $("#floating").on("transitionend", function(event) {
+        if ($(this).width() >= 300 && event.originalEvent.propertyName === "width") {
+            $(this).prepend("<h1>Contact Us</h1>");
         }
     });
 
-    //Quill
-    var quill = new Quill('#editor', {
-        theme: 'snow'
+    $("#floating").mouseleave(function() {
+        $(this).find("h1").remove();
     });
+
+    $(window).scroll(function() {
+        const reveals = document.querySelectorAll('.reveal-section');
+        const windowheight = window.innerHeight;
+        const revealpoint = 100;
+
+        let scrollTop = $(this).scrollTop();
+        // let contentOffsetTop = $('header#navbar-section').offset().top;
+
+        if (scrollTop > 0) {
+            $('header#navbar-section').addClass('shadow');
+        } else {
+            $('header#navbar-section').removeClass('shadow');
+        }
+
+        if(reveals.length > 0) {
+            for (let i = 0; i < reveals.length; i++) {
+                let revealtop = reveals[i].getBoundingClientRect().top;
+    
+                if (revealtop < windowheight - revealpoint) {
+                    reveals[i].classList.add('flying-section');
+                } else {
+                    reveals[i].classList.remove('flying-section');
+                }
+            }
+        }
+    });
+
+    // //Quill . place it on different files.
+    // var quill = new Quill('#editor', {
+    //     theme: 'snow'
+    // });
 });

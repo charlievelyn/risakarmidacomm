@@ -16,7 +16,7 @@
     {{-- Logo Title --}}
     <link rel="icon" href="{{ asset('storage/asset/rkc_logo.png') }}" type="image/x-icon">
 </head>
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body class="d-flex flex-column h-100" data-spy="scroll" data-target=".navbar" data-offset="50">
     {{-- Preload --}}
     <section class="preloader">
         <div class="preloader-inner">
@@ -30,14 +30,17 @@
     {{-- Content --}}
     @yield('content')
 
-    
-  <a href="https://wa.me/1234567890" class="whatsapp-button btn btn-success btn-lg" target="_blank">
-    <i class="fab fa-whatsapp"></i> Contact Us on Whatsapp
-  </a>
-
+    <div class="floating" id="floating">
+        <a href="https://api.whatsapp.com/send?phone=08119934474&text=Hello%21%20." target="_blank">
+            <img src="{{ asset('storage/asset/whatsapp-logo.png') }}" alt="" class="float-button">
+        </a>
+    </div>
+    {{-- <div class="contact-box">Contact Us</div> --}}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> --}}
+
+    @yield('script')
 </body>
 </html>

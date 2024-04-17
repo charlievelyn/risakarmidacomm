@@ -1,4 +1,4 @@
-<section id="clients-section" class="clients-section">
+<section id="clients-section" class="section reveal-section">
     <div class="container">
         <div class="skew-c">
             @include('layouts.components.skewc', [
@@ -27,7 +27,7 @@
                                 <div class="grid logo-grid">
                                     @foreach ($slide as $image)
                                         <div class="cell logo-container">
-                                            <img src="{{ asset('images/' . $image) }}" alt="{{ $image }}">
+                                            <img src="{{ asset('storage/asset/clients/' . $image) }}" alt="{{ $image }}">
                                         </div>
                                     @endforeach
                                 </div>

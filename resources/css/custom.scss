@@ -1,5 +1,5 @@
 $color-beige: #fae6b1; // 250, 230, 177
-$color-orangevivid: #ffa101; // 255, 161, 1
+$color-orangevivid: #E9831F; // 255, 161, 1
 $color-softblue: #b3dee5; // 179, 222, 229
 $color-slate: #31525b; // 49, 82, 91
 
@@ -9,27 +9,56 @@ $color-deeporange: #FF5733;
 $color-darkgray: #333333;
 $color-darkblue: #1A1A4D;
 
+/* Global Style */
 body {
+    height: 100%;
+    overflow-x: hidden;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-size: 1em;
-    background-color: $color-softblue;
+    background-color: #fff;
+    min-height: 100vh;
+}
+
+main {
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
   font-weight: 900;
 }
 
-.offcanvas {
-  transition: none;
+
+// .offcanvas {
+//   transition: none;
+// }
+
+/* Scroll Reveal */
+.reveal-section {
+    position: relative;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.5s ease;
 }
+
+.flying-section {
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.shadow {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+}
+
 
 /* Navbar section */
 
 header#navbar-section {
-    background-color: rgba(250, 230, 177, 1);
+    background-color: #fff;
     height: 100px;
-    
+
     // .transparent-bg {
     //     background-color: rgba(250, 230, 177, 0.5);
     // }
@@ -77,12 +106,12 @@ header#navbar-section {
         }
         .navigation-section {
             float: none;
-            color: $color-beige;
-            background-color: $color-orangevivid;
+            color: #fff;
+            background-color: $color-darkgray;
         }
         ul {
             li {
-                border: 1px inset $color-beige;
+                border: 1px inset #fff;
             }
         }
     }
@@ -114,23 +143,43 @@ header#navbar-section {
 -------------------------------------------------- */
 
 section#banner-section {
-/* Carousel base class */
-    /* Since positioning the image, we need to help out the caption */
+    .banner-container {
+        position: relative;
+        width: 100%;
+        height: 500px; /* Adjust the height as needed */
+        overflow: hidden; /* Ensure the image doesn't overflow */
+    }
+    
+    .banner-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensure the image covers the entire container */
+        opacity: 1; /* Initial opacity */
+        transition: opacity 0.5s ease; /* Smooth transition for opacity */
+    }
+    
     .carousel-caption {
-        bottom: 3rem;
-    }
-
-    /* Declare heights because of positioning of img element */
-    .carousel-item {
-        height: 32rem;
-    }
-
-    .carousel-item > img {
         position: absolute;
         top: 0;
-        left: 0;
-        min-width: 100%;
-        height: 32rem;
+        right: 0;
+        bottom: 0;
+        width: 50%; /* Adjust the width as needed */
+        padding: 20px; /* Add padding as needed */
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        color: #fff; /* Text color */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        opacity: 0; /* Initially hidden */
+        transition: opacity 0.5s ease; /* Smooth transition for opacity */
+    }
+    
+    .carousel-item.active .banner-image {
+        opacity: 0.5; /* Adjust the opacity level as needed */
+    }
+    
+    .carousel-item.active .carousel-caption {
+        opacity: 1; /* Show caption */
     }
 }
 
@@ -138,7 +187,7 @@ section#banner-section {
 
 .skew-c {
 //   background: url('../assets/bg-orange.jpg');
-    background: $color-orangevivid;
+    background: $color-darkgray;
     padding: 10px 50px;
     
   .separator {
@@ -296,10 +345,15 @@ section#banner-section {
 }
 
 //our team
-    /* Flip animation */
-    .team-member:hover .team-info {
-      transform: rotateX(180deg);
-  }
+div#teamCarousel {
+    .carousel-item {
+        img {
+            width: 300px;
+            height: auto;
+        }
+    }
+}
+
 
   /* Slide up animation */
   /* Uncomment the code below and comment out the flip animation code if you prefer sliding up effect */
@@ -384,57 +438,10 @@ section#clients-section {
     }
 }
 
-
-// Footer styles
-// footer {
-//   background-color: #333;
-//   color: #fff;
-//   padding: 50px 0;
-  
-//   .footer-content {
-//       display: flex;
-//       justify-content: space-between;
-//       align-items: flex-start;
-//       flex-wrap: wrap;
-
-//       .footer-section {
-//           width: 25%;
-//           margin-bottom: 20px;
-
-//           h3 {
-//               margin-bottom: 15px;
-//           }
-
-//           ul {
-//               list-style-type: none;
-//               padding: 0;
-//               margin: 0;
-
-//               li {
-//                   margin-bottom: 10px;
-//               }
-//           }
-//       }
-
-//       .social-media {
-//           display: flex;
-//           justify-content: center;
-//           align-items: center;
-//           margin-top: 20px;
-
-//           a {
-//               margin: 0 10px;
-//               color: #fff;
-//           }
-//       }
-//   }
-// }
-
-
 /* Footer Area */
 .footer-area {
-    color: var(--light-white);
-    background-color: var(--light-blue);
+    color: #fff;
+    background-color: $color-orangevivid;
     font-weight: 600;
     font-size: 12px;
     width: 100%;
@@ -510,12 +517,61 @@ section#clients-section {
     color: $color-slate;
 }
 
-.whatsapp-button {
+
+// Whatsapp
+.floating {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000; /* Ensure it appears above other elements */
-  }
+    width: 100px;
+    height: 100px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    h1 {
+        margin-right: 30px;
+    }
+
+    .float-button {
+        height: 100px;
+        float: right;
+    }
+
+    &:hover {
+        width: 400px;
+    }
+}
+
+
+// .contact-box {
+//     position: fixed;
+//     bottom: 40px;
+//     right: 160px; /* Adjust as needed */
+//     background-color: #25d366;
+//     color: #FFF;
+//     padding: 10px 20px;
+//     border-radius: 5px;
+//     font-size: 16px;
+//     box-shadow: 2px 2px 3px #999;
+//     z-index: 99; /* Ensure it's behind the WhatsApp button */
+//     transition: opacity 0.3s ease, right 0.3s ease; /* Add transition for smooth appearance */
+//     opacity: 0; /* Initially hide the contact box */
+// }
+
+.floating:hover + .contact-box {
+    right: 140px; /* Adjust as needed */
+    opacity: 1; /* Show the contact box */
+}
+
 
 
 /* Media Size */
@@ -545,17 +601,127 @@ section#clients-section {
 // }
 
 
+//team
+
+main#team {
+    height: 100%;
+
+    .slider-nav {
+        img {
+            opacity: 0.5;
+            height: 200px;
+        }
+        .slider-image {
+            padding: 5px;
+            margin: 10px;
+            background-color: $color-softblue;
+        }
+        .slick-center {
+            img {
+                opacity: 1;
+            }
+        }
+    }
+
+    .slider-description {
+        .member {
+            display: flex;
+            align-items: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            // position: relative;
+            min-height: 50vh;
+            height: auto;
+
+            .overlay {
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.5);
+                background-size: cover;
+                display: flex;
+                align-items: center;
+
+                .left-image {
+                    margin: 20px;
+            
+                    img {
+                        display: block;
+                        width: 250px;
+                        border: 1px solid white;
+                        border-radius: 5px;
+                    }
+
+                    @media (max-width: 767.98px) {
+                        img {
+                            display: none;
+                        }
+                    }
+                }
+                
+                .content {
+                    height: auto;
+                    background-size: cover;
+                    background-position: center;
+                    // background-color: rgba(250, 230, 177, 0.5);
+                    color: #000;
+                    padding: 50px;
+                }
+            }
+                
+            
+        }
+    
+    }
+}
+
+
+
 // articles
 main#articles {
     background-color: red;
-    height: auto;
     color: #fff;
+    a {
+        text-decoration: none;
+    }
     .card-grid {
         .card-grid-lg{
-          height: 560px;
+            background-color: green;
+            height: 560px;
         }
+
         .card-grid-sm{
-          height: calc(280px - calc(var(--bs-gutter-y) / 2));
+            background-color: green;
+            height: calc(280px - calc(var(--bs-gutter-y) / 2));
         }
-      }
+    }
+    .avatar {
+        height: 2.5rem;
+        width: 2.5rem;
+        position: relative;
+        display: inline-block !important;
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+    }
+}
+
+main#singlepost {
+    .card {
+        height: 100px;
+        background-color: red;
+    }
+
+    .main-area {
+        height: 100px;
+        background-color: blue;
+    }
+
+    .side-area {
+        height: 100px;
+        background-color: green;
+    }
 }

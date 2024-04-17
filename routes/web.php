@@ -26,6 +26,14 @@ use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/', [PagesController::class, 'index']);
 Route::get('/articles', [PagesController::class, 'articles']);
+Route::get('/team', [PagesController::class, 'team']);
+Route::get('/clients', [PagesController::class, 'clients']);
+Route::get('/trainingevents', [PagesController::class, 'trainingevent']);
+Route::get('/contactus', [PagesController::class, 'contactus']);
+
+Route::get('/singlepost', [PagesController::class, 'singlepost']);
+
+
 Route::get('/editor', [EditorController::class, 'show'])->name('editor');
 Route::post('/save', [EditorController::class, 'save'])->name('save');
 

@@ -4,6 +4,7 @@
 
 @include('sections.header')
 
+<main>
 @include('sections.home.carousel')
 
 @include('sections.home.about')
@@ -17,6 +18,7 @@
 @include('sections.home.clients')
 
 @include('sections.home.contactus')
+</main>
 
 @include('sections.footer')
 
