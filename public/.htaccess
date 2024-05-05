@@ -1,21 +1,78 @@
-<IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
-    </IfModule>
+# Disable directory listing
+Options -Indexes
 
+# Protect against clickjacking
+Header always append X-Frame-Options "SAMEORIGIN"
+
+# Prevent MIME type sniffing
+Header set X-Content-Type-Options "nosniff"
+
+# Enable XSS protection
+Header set X-XSS-Protection "1; mode=block"
+
+# Prevent access to sensitive files
+<FilesMatch "(^#.*#|\.(bak|config|dist|fla|in[ci]|log|psd|sh|sql|sw[op]|cpanel|webmail)|~)$">
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</FilesMatch>
+
+# Block access to cpanel
+<Files "cpanel*">
+    Order Deny,Allow
+    Deny from all
+    Allow from your_IP_address
+</Files>
+
+# Block access to webmail
+<Files "webmail*">
+    Order Deny,Allow
+    Deny from all
+    Allow from your_IP_address
+</Files>
+
+# Block access to certain user agents
+<IfModule mod_setenvif.c>
+    SetEnvIfNoCase User-Agent "wget" bad_bot
+    SetEnvIfNoCase User-Agent "curl" bad_bot
+    <Limit GET POST>
+        Order Allow,Deny
+        Allow from all
+        Deny from env=bad_bot
+    </Limit>
+</IfModule>
+
+# Rewrite http to https
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Rewrite 404
+<IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
-
-    # Send Requests To Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
+    # If the requested file or directory does not exist
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Rewrite the URL to index.php
+    RewriteRule ^(.*)$ index.php/$1 [L]
 </IfModule>
+
+# Block access to specific IP addresses (replace xxx.xxx.xxx.xxx with the actual IP)
+#<RequireAll>
+#    Require all granted
+#    Require not ip xxx.xxx.xxx.xxx
+#</RequireAll>
+
+# Disable server signature
+ServerSignature Off
+
+# Limit file upload size
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+
+# Set a custom error page for 403 Forbidden
+ErrorDocument 403 /403.html

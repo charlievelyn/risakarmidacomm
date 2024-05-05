@@ -2,7 +2,7 @@
 
 @section('content')
     @include('sections.header')
-
+{{-- 
     <main id="training-events">
         <div class="container">
             <div class="row">
@@ -30,6 +30,17 @@
                             </div>
                         @endforeach
                     </div>
+                </div>
+            </div>
+        </div>
+    </main> --}}
+
+    <main>
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="row">
+                    <h1 class="p-5" style="text-align: center;">Page under construction</h1>
+                    <img src="{{ asset('storage/asset/under_construction.png') }}" alt="under construction" style="display: block; margin-left: auto; margin-right: auto; width: 500px;">
                 </div>
             </div>
         </div>

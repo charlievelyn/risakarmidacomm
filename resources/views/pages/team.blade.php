@@ -1,5 +1,16 @@
 @extends('layouts.layout')
 
+@section('preload')
+  @php
+      $imageFolder = public_path('storage/asset/teams'); // Change 'images' to your folder name
+      $imageFiles = glob($imageFolder . '/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
+  @endphp
+
+  @foreach ($imageFiles as $imageFile)
+      <link rel="preload" href="{{ asset($imageFile) }}" as="image">
+  @endforeach
+@endsection
+
 @section('content')
     @include('sections.header')
 
@@ -22,13 +33,13 @@
       <div class="col-lg-12">
         <div class="slider-description">
           @foreach($teamMembers as $member)
-          <div class="member" style="background-image: url('{{ asset('storage/asset/teams/' . $member['image']) }}'); background-color: rgba(255, 255, 255, 0.5); ">
+          <div class="member" style="background-image: url('{{ asset('storage/asset/teams/' . $member['image']) }}'); background-color: rgba(255, 255, 255, 0.5); background-position: center top; background-size: 75%;">
             <div class="overlay">
               <div class="left-image">
                 <img src="{{ asset('storage/asset/teams/' . $member['image']) }}" alt="{{ $member['name'] }}" />
               </div>
               <div class="content">
-                <h2>{{ $member['name'] }}</h2>
+                <h1>{{ $member['name'] }}</h1>
                 <h3>{{ $member['position'] }}</h3>
                 {{-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil suscipit perspiciatis eligendi perferendis dolore nisi laborum expedita eum aspernatur odit assumenda tempora cupiditate beatae consectetur obcaecati sunt magnam natus, ducimus illum animi, iusto, asperiores nostrum ipsam vel. Officia atque quibusdam assumenda, tempore, inventore veniam ipsa optio voluptatem nostrum, doloremque eligendi.</p> --}}
               </div>

@@ -76,7 +76,7 @@ header#navbar-section {
     ul {
         li {
             padding: 4px 20px;
-            font-weight: 600;
+            font-weight: 800;
         }
 
         .active {
@@ -84,6 +84,7 @@ header#navbar-section {
         }
 
         li:hover {
+            color: $color-orangevivid;
             text-shadow: 2px 2px 4px #fff;
         }
     }
@@ -328,20 +329,68 @@ section#banner-section {
 //our training
 .training-section {
     color: #fff;
-    .content {
-        overflow: hidden; /* Hide overflow */
-        transition: max-height 0.5s ease; /* Add smooth transition */
+
+    .training-card {
+        height: 300px;
+
+        .training-icon {
+            padding-bottom: 30px;
+        }
+
+        p {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        svg {
+            opacity: 1;
+            transition: opacity 0.5s ease;
+            transition: height 0.3s ease;
+        }
+
+        &:hover {
+            // background-color: rgba(255, 161, 1, 0.7);
+            border-radius: 20px;
+            // margin-bottom: 10px;
+
+            h2 {
+                font-weight: bolder;
+                height: 100px;
+            }
+
+            p {
+                height:fit-content;
+                padding-top: auto;
+                padding-bottom: auto;
+            }
+
+            svg {
+                opacity: 0;
+                height: 0;
+            }
+
+            p {
+                display: block;
+                opacity: 1;
+            }
+        }
     }
 
-    .expandable-content {
-        max-height: 0; /* Initially hide content */
-        overflow: hidden;
-        transition: max-height 0.5s ease; /* Add smooth transition */
-    }
+    // .content {
+    //     overflow: hidden; /* Hide overflow */
+    //     transition: max-height 0.5s ease; /* Add smooth transition */
+    // }
 
-    .show-more-button {
-        max-height: 1000px; /* Adjust as needed */
-    }
+    // .expandable-content {
+    //     max-height: 0; /* Initially hide content */
+    //     overflow: hidden;
+    //     transition: max-height 0.5s ease; /* Add smooth transition */
+    // }
+
+    // .show-more-button {
+    //     max-height: 1000px; /* Adjust as needed */
+    // }
 }
 
 //our team
@@ -521,8 +570,8 @@ section#clients-section {
 // Whatsapp
 .floating {
     position: fixed;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     bottom: 40px;
     right: 40px;
     background-color: #25d366;
@@ -542,11 +591,14 @@ section#clients-section {
     }
 
     .float-button {
-        height: 100px;
+        height: 80px;
         float: right;
     }
 
     &:hover {
+        @media (max-width: 767.98px) {
+            width: 300px;
+        }
         width: 400px;
     }
 }
@@ -635,7 +687,7 @@ main#team {
 
             .overlay {
                 width: 100%;
-                height: 100%;
+                height: 150%;
                 background-color: rgba(255, 255, 255, 0.5);
                 background-size: cover;
                 display: flex;
@@ -649,12 +701,6 @@ main#team {
                         width: 250px;
                         border: 1px solid white;
                         border-radius: 5px;
-                    }
-
-                    @media (max-width: 767.98px) {
-                        img {
-                            display: none;
-                        }
                     }
                 }
                 
@@ -670,7 +716,20 @@ main#team {
                 
             
         }
-    
+        @media (max-width: 767.98px) {
+            .member {
+                background-position: center; 
+                background-size: 75%;
+
+                .overlay {
+                    .left-image {
+                        img {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

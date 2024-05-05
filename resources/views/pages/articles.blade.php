@@ -3,7 +3,7 @@
 @section('content')
 
 @include('sections.header')
-
+{{-- 
 <main id="articles">
     <section class="pt-4 pb-0 card-grid">
         <div class="container">
@@ -130,12 +130,12 @@
                                     <div class="card">
                                         <!-- Card img -->
                                         <div class="position-relative">
-                                            {{-- <img class="card-img" src="assets/images/blog/4by3/01.jpg" alt="Card image"> --}}
+                                            {{-- <img class="card-img" src="assets/images/blog/4by3/01.jpg" alt="Card image"> 
                                             <div class="card-img-overlay d-flex align-items-start flex-column p-3">
                                                 <!-- Card overlay bottom -->
                                                 <div class="w-100 mt-auto">
                                                     <!-- Card category -->
-                                                    {{-- <a href="#" class="badge text-bg-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Category</a> --}}
+                                                    {{-- <a href="#" class="badge text-bg-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Category</a> 
                                                 </div>
                                             </div>
                                         </div>
@@ -143,7 +143,7 @@
                                             <!-- Sponsored Post -->
                                             {{-- <a href="#!" class="mb-0 text-body small" tabindex="0" role="button" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="You're seeing this ad because your activity meets the intended audience of our site.">
                                                 <i class="bi bi-info-circle ps-1"></i> Sponsored
-                                            </a> --}}
+                                            </a> 
                                             <h4 class="card-title mt-2"><a href="post-single.html" class="btn-link text-reset fw-bold">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, sunt.</a></h4>
                                             <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro voluptatem sit autem inventore quod enim similique minima voluptatum sequi sunt, aut sed accusamus itaque minus mollitia ut, atque commodi facilis!</p>
                                             <!-- Card info -->
@@ -202,8 +202,18 @@
                 </div>
             </section>
     </div>
+</main> --}}
+
+
+<main>
+    <div class="container">
+        <div class="col-lg-12">
+            <div class="row">
+                <h1 class="p-5" style="text-align: center;">Page under construction</h1>
+                <img src="{{ asset('storage/asset/under_construction.png') }}" alt="under construction" style="display: block; margin-left: auto; margin-right: auto; width: 500px;">
+            </div>
+        </div>
+    </div>
 </main>
-
-
 @include('sections.footer')
 @endsection

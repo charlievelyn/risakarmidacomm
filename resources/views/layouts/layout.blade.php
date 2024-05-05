@@ -15,6 +15,8 @@
 
     {{-- Logo Title --}}
     <link rel="icon" href="{{ asset('storage/asset/rkc_logo.png') }}" type="image/x-icon">
+
+    @yield('preload')
 </head>
 <body class="d-flex flex-column h-100" data-spy="scroll" data-target=".navbar" data-offset="50">
     {{-- Preload --}}
@@ -30,11 +32,11 @@
     {{-- Content --}}
     @yield('content')
 
-    <div class="floating" id="floating">
-        <a href="https://api.whatsapp.com/send?phone=08119934474&text=Hello%21%20." target="_blank">
+    <a href="https://wa.me/628119934474?text=Halo%2C%20saya%20membutuhkan%20informasi%20tentang%20pelatihan%20komunikasi%20di%20RKC%20Trainings." target="_blank">
+        <div class="floating" id="floating">
             <img src="{{ asset('storage/asset/whatsapp-logo.png') }}" alt="" class="float-button">
-        </a>
-    </div>
+        </div>
+    </a>
     {{-- <div class="contact-box">Contact Us</div> --}}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

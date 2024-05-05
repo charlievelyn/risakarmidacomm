@@ -15,9 +15,9 @@
                                     @foreach ($chunk as $member)
                                         <div class="col-md-4">
                                             <img src="{{ asset('storage/asset/teams/' . $member['image']) }}" class="d-block w-100" alt="{{ $member['name'] }}" />
-                                                <div class="d-md-flex align-items-center">
-                                                    <h5 class="mb-0">{{ $member['name'] }}</h5>
-                                                </div>
+                                            <div class="align-items-center p-3">
+                                                <h5 class="mb-0">{{ $member['name'] }}</h5>
+                                            </div>
                                         </div>
                                     @endforeach
                                 </div>
