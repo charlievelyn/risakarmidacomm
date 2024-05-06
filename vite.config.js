@@ -28,6 +28,6 @@ export default defineConfig({
         },
     },
     optimizeDeps: {
-        include: ['dropzone', 'cropperjs', '@fortawesome/fontawesome-free'], // Include Dropzone.js and Cropper.js
+        include: ['quill', 'dropzone', 'cropperjs', '@fortawesome/fontawesome-free'], // Include Quill.js, Dropzone.js, Cropper.js, and FontAwesome
     },
 });

@@ -6,9 +6,6 @@
 
 import $ from 'jquery';
 
-// Import Quill
-import Quill from 'quill';
-
 // Import Dropzone
 import Dropzone from 'dropzone';
 import Cropper from 'cropperjs';
@@ -22,6 +19,9 @@ import '@fortawesome/fontawesome-free/css/fontawesome.css';
 import '@fortawesome/fontawesome-free/css/solid.css';
 import './custom'
 import { createApp } from 'vue';
+
+// Import Quill
+import Quill from 'quill';
 
 window.$ = $;
 window.Quill = Quill;

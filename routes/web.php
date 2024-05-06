@@ -3,26 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\LoginController;
-
-// use App\Http\Controllers\ProfileController;
-// use Illuminate\Support\Facades\Route;
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-
-// require __DIR__.'/auth.php';
+use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', [PagesController::class, 'index']);
 Route::get('/articles', [PagesController::class, 'articles']);
@@ -31,16 +14,13 @@ Route::get('/clients', [PagesController::class, 'clients']);
 Route::get('/trainingevents', [PagesController::class, 'trainingevent']);
 Route::get('/contactus', [PagesController::class, 'contactus']);
 
-// Route::get('/singlepost', [PagesController::class, 'singlepost']);
-// Route::get('/editor', [EditorController::class, 'show'])->name('editor');
-// Route::post('/save', [EditorController::class, 'save'])->name('save');
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Route::get('/dashboard', [PagesController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
 
-// Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-// Route::post('/login', [LoginController::class, 'login']);
-// Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [ProfileController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/dashboard/store', [ProfileController::class, 'store'])->name('dashboard.store');
+Route::post('/dashboard/upload', [ProfileController::class, 'upload'])->name('dashboard.upload');

@@ -117,8 +117,4 @@ class PagesController extends Controller
     public function contactus(){
         return view("pages.contactus");
     }
-
-    public function dashboard(){
-        return view("pages.dashboard");
-    }
 }

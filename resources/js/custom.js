@@ -87,9 +87,4 @@ $(document).ready(function() {
             }
         }
     });
-
-    // //Quill . place it on different files.
-    // var quill = new Quill('#editor', {
-    //     theme: 'snow'
-    // });
 });
