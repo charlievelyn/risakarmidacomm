@@ -7,6 +7,21 @@
 </form>
 
 <h1>This is Dashboard</h1>
+<div class="container">
+    <h1>Dashboard</h1>
+    <div class="articles">
+        @foreach($articles as $article)
+            <div class="article">
+                <h2>{{ $article->title }}</h2>
+                <p>{!! $article->description !!}</p>
+                <p>Author: {{ $article->author }}</p>
+                @if($article->image)
+                    <img src="{{ $article->image }}" alt="Article Image">
+                @endif
+            </div>
+        @endforeach
+    </div>
+</div>
 
 <form id="articleForm" method="POST" action="{{ route('dashboard.store') }}" style="margin-top: 20px;">
     @csrf

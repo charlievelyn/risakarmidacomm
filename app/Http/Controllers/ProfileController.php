@@ -17,7 +17,9 @@ class ProfileController extends Controller
 {
     public function dashboard()
     {
-        return view("profile.dashboard");
+        $articles = Article::all();
+    
+        return view("profile.dashboard", compact('articles'));
     }
 
     public function upload(Request $request)
