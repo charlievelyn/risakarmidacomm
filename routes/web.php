@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
@@ -21,6 +22,24 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
-Route::get('/dashboard', [ProfileController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::post('/dashboard/store', [ProfileController::class, 'store'])->name('dashboard.store');
-Route::post('/dashboard/upload', [ProfileController::class, 'upload'])->name('dashboard.upload');
+
+Route::get('/article/{id}', [PagesController::class, 'show_article'])->name('article.show');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [ProfileController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('/db-article', [ArticleController::class, 'article'])->name('db-article');
+
+    // new article post
+    Route::post('/db-article/store', [ArticleController::class, 'store'])->name('db-article.store');
+    Route::post('/db-article/upload', [ArticleController::class, 'upload'])->name('db-article.upload');
+
+    Route::get('/db-article/{article}', [ArticleController::class, 'show'])->name('db-article.show');
+
+    Route::get('/db-article/{articleId}', [ArticleController::class, 'update'])->name('db-article.update');
+    Route::put('/db-article/{articleId}', [ArticleController::class, 'update'])->name('db-article.update');
+    // Route::post('/db-article/update', [ArticleController::class, 'update'])->name('db-article.update');
+
+    // Route::put('/db-article/{articleId}', [ArticleController::class, 'update'])->name('db-article.update');
+    Route::delete('/db-article/{article}', [ArticleController::class, 'destroy'])->name('db-article.destroy');
+});

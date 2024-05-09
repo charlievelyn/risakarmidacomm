@@ -70,46 +70,68 @@
     <section class="position-relative">
         <div class="container" data-sticky-container="">
             <div class="row">
-                <div class="col-lg-9">
-                    <div class="row gy-4">
-                        <div class="col-sm-12">
-                            <div class="card">
-                                <div class="position-relative">
-                                    <img class="card-img" src="assets/images/blog/4by3/01.jpg" alt="Card image"> 
-                                    <div class="card-img-overlay d-flex align-items-start flex-column p-3">
-                                        <div class="w-100 mt-auto">
-                                            <a href="#" class="badge text-bg-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Category</a> 
-                                        </div>
+                <div class="col-lg-12">
+                    @foreach ($articles as $article)
+                    <div class="card m-3">
+                        <a href="{{ route('article.show', $article->id) }}" class="card-link">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h2 class="card-title mt-2">{{ $article->title }}</h2>
+                                        <p class="card-text">
+                                            {!! \Illuminate\Support\Str::words(preg_replace('/<[^>]*>/', '', $article->description), 30) !!}
+                                            @if (str_word_count(strip_tags($article->description)) > 30)
+                                                <a href="{{ route('article.show', $article->id) }}">Read more</a>
+                                            @endif
+                                        </p>
+                                        <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                                            <li class="nav-item">
+                                                <div class="nav-link">
+                                                    <div class="d-flex align-items-center position-relative">
+                                                        <div class="avatar avatar-xs">
+                                                            <img class="avatar-img rounded-circle" src="{{ asset('storage/asset/teams/risa_karmida.jpeg') }}" alt="avatar">
+                                                        </div>
+                                                        <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">{{ $article->author }}</a></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="nav-item">{{ $article->created_at->format('M d, Y') }}</li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="card-body px-0 pt-3">
-                                    <a href="#!" class="mb-0 text-body small" tabindex="0" role="button" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="You're seeing this ad because your activity meets the intended audience of our site.">
-                                        <i class="bi bi-info-circle ps-1"></i> Sponsored
-                                    </a> 
-                                    <h4 class="card-title mt-2"><a href="post-single.html" class="btn-link text-reset fw-bold">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, sunt.</a></h4>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro voluptatem sit autem inventore quod enim similique minima voluptatum sequi sunt, aut sed accusamus itaque minus mollitia ut, atque commodi facilis!</p>
-                                    <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
-                                        <li class="nav-item">
-                                            <div class="nav-link">
-                                                <div class="d-flex align-items-center position-relative">
-                                                    <div class="avatar avatar-xs">
-                                                        <img class="avatar-img rounded-circle" src="{{ asset('images/team1.jpeg') }}" alt="avatar">
-                                                    </div>
-                                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Risa</a></span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">Apr 09, 2024</li>
-                                    </ul>
-                                </div>
                             </div>
-                        </div>
-                        <div class="col-12 text-center mt-5">
-                            <button type="button" class="btn btn-primary-soft">Load more post <i class="bi bi-arrow-down-circle ms-2 align-middle"></i></button>
-                        </div>
+                        </a>
                     </div>
+                @endforeach
+                    
                 </div>
-                <div class="col-lg-3 mt-5 mt-lg-0">
+                
+                <div class="col-12 text-center mt-5">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            <!-- Previous Page Link -->
+                            @if ($articles->onFirstPage())
+                                <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                            @else
+                                <li class="page-item"><a class="page-link" href="{{ $articles->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+                            @endif
+
+                            @for ($i = 1; $i <= $articles->lastPage(); $i++)
+                                <li class="page-item {{ $i == $articles->currentPage() ? 'active' : '' }}">
+                                    <a class="page-link" href="{{ $articles->url($i) }}">{{ $i }}</a>
+                                </li>
+                            @endfor
+                
+                            <!-- Next Page Link -->
+                            @if ($articles->hasMorePages())
+                                <li class="page-item"><a class="page-link" href="{{ $articles->nextPageUrl() }}" rel="next">&raquo;</a></li>
+                            @else
+                                <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                            @endif
+                        </ul>
+                    </nav>
+                </div>
+                {{-- <div class="col-lg-3">
                     <div data-sticky="" data-margin-top="80" data-sticky-for="767" style="">
                         <div class="row">
                             <div class="col-12 col-sm-6 col-lg-12">
@@ -128,7 +150,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
