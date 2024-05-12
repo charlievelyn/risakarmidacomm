@@ -17,7 +17,7 @@ class ArticleController extends Controller
 {
     public function article()
     {
-        $articles = Article::all();
+        $articles = Article::orderByDesc('created_at')->get();
         $user = Auth::user();
 
         return view("profile.db-article", compact('articles', 'user'));

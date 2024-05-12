@@ -9,24 +9,25 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', [PagesController::class, 'index']);
-Route::get('/articles', [PagesController::class, 'articles']);
+Route::get('/articles', [PagesController::class, 'articles'])->name('articles');
+Route::get('/articles/{articleId}', [PagesController::class, 'articles'])->name('articles.show');
 Route::get('/team', [PagesController::class, 'team']);
 Route::get('/clients', [PagesController::class, 'clients']);
 Route::get('/trainingevents', [PagesController::class, 'trainingevent']);
 Route::get('/contactus', [PagesController::class, 'contactus']);
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/rkc-access', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/rkc-access', [LoginController::class, 'login']);
+Route::post('/rkc-exit', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::get('/article/{id}', [PagesController::class, 'show_article'])->name('article.show');
+// Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+// Route::post('/register', [RegisterController::class, 'register']);
+
+// Route::get('/article/{id}', [PagesController::class, 'show_article'])->name('article.show');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [ProfileController::class, 'dashboard'])->name('dashboard');
+    Route::get('/db-dashboard', [ProfileController::class, 'dashboard'])->name('db-dashboard');
 
     Route::get('/db-article', [ArticleController::class, 'article'])->name('db-article');
 

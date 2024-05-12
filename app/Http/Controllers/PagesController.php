@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use App\Models\Banner;
 use App\Models\Client;
 use App\Models\Team;
@@ -23,9 +25,39 @@ class PagesController extends Controller
         return view("pages.home", compact('teamMembers', 'trainings', 'clients', 'values', 'banners'));
     }
 
-    public function articles(){
-        $articles = Article::orderBy('created_at', 'desc')->paginate(2);
-        return view("pages.articles", compact('articles'));
+    public function articles($articleId = null){
+        $articles = Article::orderBy('created_at', 'desc')->paginate(10);
+
+        if($articleId) {
+            $main_article = Article::findOrFail($articleId);
+        } else {
+            $main_article = $articles->first(); // Fetch the current item based on some criteria
+        }
+        
+        if ($main_article) {
+            // Get the previous item
+            $previous_article = Article::where('created_at', '<', $main_article->created_at)->orderBy('created_at', 'desc')->first();
+            if (!$previous_article) {
+                // If there is no previous item, loop back to the last item
+                $previous_article = Article::orderBy('created_at', 'desc')->first();
+                $previous_article->description = Str::limit(strip_tags($previous_article->description), 50, '...');
+            }
+
+            // Get the next item
+            $next_article = Article::where('created_at', '>', $main_article->created_at)->orderBy('created_at')->first();
+            if (!$next_article) {
+                // If there is no next item, loop back to the first item
+                $next_article = Article::orderBy('created_at')->first();
+                $next_article->description = Str::limit(strip_tags($next_article->description), 50, '...');
+            }
+        }
+
+        return view("pages.articles")->with([
+            'articles' => $articles,
+            'main_article' => $main_article,
+            'previous_article' => $previous_article,
+            'next_article' => $next_article,
+        ]);
     }
 
     public function show_article($id){
