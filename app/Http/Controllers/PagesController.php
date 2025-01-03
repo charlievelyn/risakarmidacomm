@@ -27,6 +27,8 @@ class PagesController extends Controller
 
     public function articles($articleId = null){
         $articles = Article::orderBy('created_at', 'desc')->paginate(10);
+        $previous_article = null;
+        $next_article = null;
 
         if($articleId) {
             $main_article = Article::findOrFail($articleId);
