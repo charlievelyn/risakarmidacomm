@@ -3,10 +3,9 @@
 @section('content')
 
 @include('sections.header')
-
 <main>
     <div class="container">
-        <section id="contactus-section" class="section reveal-section">
+        <section id="contactus-section" class="section">
             <div class="container">
                 <div class="skew-cc">
                     @include('layouts.components.skewcc', [

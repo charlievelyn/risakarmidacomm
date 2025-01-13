@@ -15,26 +15,40 @@ use App\Models\Article;
 
 class ArticleController extends Controller
 {
-    public function article()
+    public function listarticle()
     {
         $articles = Article::orderByDesc('created_at')->get();
         $user = Auth::user();
 
-        return view("profile.db-article", compact('articles', 'user'));
+        return view("components.profile.listarticle", compact('articles', 'user'));
     }
 
     public function upload(Request $request)
     {
-        if($request->hasFile('upload')){
-            $originName = $request->file('upload')->getClientOriginalName();
-            $fileName = pathinfo($originName, PATHINFO_FILENAME);
-            $extension = $request->file('upload')->getClientOriginalExtension();
-            $fileName = $fileName.'_'.time().'.'.$extension;
-            $request->file('upload')->move(public_path('media'),$fileName);
+        // if ($request->hasFile('upload')) {
+        //     $file = $request->file('upload');
+        //     $path = $file->store('uploads', 'public');
+        //     $url = asset("storage/{$path}");
+            
+        //     return response()->json(['url' => $url]);
+        // }
 
-            $url = asset('media/'.$fileName);
-            return response()->json(['fileName' => $fileName, 'uploaded' => 1, 'url' => $url]);
+        // return response()->json(['message' => 'No file uploaded'], 400);
+
+        if ($request->hasFile('upload')) {
+            $file = $request->file('upload');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads'), $filename);
+    
+            $url = asset('uploads/' . $filename);
+    
+            return response()->json([
+                'uploaded' => true,
+                'url' => $url
+            ]);
         }
+    
+        return response()->json(['uploaded' => false]);
     }
 
     public function store(Request $request)
@@ -73,12 +87,22 @@ class ArticleController extends Controller
         }
     }
 
-    public function show(Article $article)
+    public function view(Article $articleId)
     {
-        return response()->json($article);
+        // echo $articleId;
+        $article = Article::findOrFail($articleId->id);
+        // echo $article->title;
+        
+        // $dodom = ['title' => 'John Doe', 'age' => 29];//Article::find($id);
+        $data = [
+            'title' => $article->title,
+            'description' => $article->description,
+            'author' => $article->author,
+        ];
+        return response()->json($data);
     }
 
-    public function update(Request $request, $articleId)
+    public function edit(Request $request, $articleId)
     {
         Log::info($request);
         $updatedData = $request->all();
@@ -91,11 +115,11 @@ class ArticleController extends Controller
         return response()->json($request);
     }
 
-    public function destroy(Article $article)
+    public function destroy(Article $articleId)
     {
-        Log::info($article);
-        $article->delete();
-        return redirect()->route('db-article')->with('success', 'Article deleted successfully');
+        Log::info($articleId);
+        $articleId->delete();
+        return redirect()->route('article.listarticle')->with('success', 'Article deleted successfully');
     }
 
 }

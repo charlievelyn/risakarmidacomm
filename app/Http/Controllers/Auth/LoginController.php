@@ -3,35 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
-    use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
     protected $redirectTo = '/db-dashboard';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -39,6 +18,33 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
+        dd(session()->all());
         return view('profile.access');
+    }
+
+    public function masuk(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt($request->only('email', 'password'))) {
+            $request->session()->regenerate();
+            $intendedUrl = session()->get('url.intended', $this->redirectTo);
+            return redirect()->intended($intendedUrl);
+        }
+
+        return redirect()->route('masuk')
+                         ->with('error', 'Invalid credentials.')
+                         ->withInput($request->only('email'));
+    }
+
+    public function keluar(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('pintuGerbang');
     }
 }

@@ -15,7 +15,7 @@ class ProfileController extends Controller
 {
     public function dashboard()
     {
-        return view("profile.db-dashboard");
+        return view("dashboard");
     }
 
     // /**

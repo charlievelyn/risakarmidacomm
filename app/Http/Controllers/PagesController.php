@@ -15,14 +15,31 @@ use App\Models\Article;
 
 class PagesController extends Controller
 {
-    public function index(){
+    // private $banners;
+    // private $teamMembers;
+    // private $trainings;
+    // private $clients;
+    // private $values;
+
+    public function initialize(){
         $banners = Banner::all();
         $teamMembers = Team::all();
         $trainings = Training::all();
         $clients = Client::all();
-        $values =  Value::all();
+        $values = Value::all();
 
-        return view("pages.home", compact('teamMembers', 'trainings', 'clients', 'values', 'banners'));
+        return [
+            'banners' => $banners,
+            'teamMembers' => $teamMembers,
+            'trainings' => $trainings,
+            'clients' => $clients,
+            'values' => $values
+        ];
+    }
+
+    public function index(){
+        $data = $this->initialize();
+        return view("pages.home", $data);
     }
 
     public function articles($articleId = null){

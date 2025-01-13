@@ -1,7 +1,175 @@
 @extends('layouts.layout')
 
-@section('content')
+@push('styles')
+<style>
+    main#articles {
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+        
+        .main-section {
+            margin-top: 20px;
+            
+            .title-article {
+                height: auto;
+                margin: 10px;
+                padding: 10px;
+                background-color: #343a40;
+                text-align: center;
+                color: #fff;
+                border-radius: 5px;
+            }
 
+            .main-article {
+                padding: 50px;
+                border: 1px solid #dee2e6;
+                border-radius: 5px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                
+                img {
+                    max-width: 100%;
+                    height: auto;
+                    border-radius: 5px;
+                }
+            }
+
+            .main-author {
+                margin-top: 40px;
+                margin-bottom: 40px;
+                width: 100%;
+                text-align: center;
+                border-radius: 30px;
+                padding: 20px;
+                box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+
+                .avatar {
+                    height: 10rem;
+                    width: 10rem;
+                    position: relative;
+                    display: inline-block !important;
+
+                    .avatar-img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        border-radius: 50%;
+                    }
+                }
+            }
+
+            @media (max-width: 767.98px) {
+                .main-author {
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }
+            }
+
+            .other-article {
+                .other-article-container {
+                    .previous-article, .next-article {
+                        min-width: 300px;
+                        width: 50%;
+                        height: 200px;
+                        padding: 20px;
+                        margin: 10px;
+                        background-color: #f8f9fa;
+                        transition: all 0.5s ease;
+                        border: 1px solid #dee2e6;
+                        border-radius: 5px;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+                        &:hover {
+                            background-color: #343a40;
+                            color: #fff;
+                        }
+                    }
+                }
+                
+                @media (max-width: 767.98px) {
+                    .other-article-container {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .side-section {
+            margin-top: 20px;
+            
+            .side-header {
+                padding: 20px;
+                color: #fff;
+                margin: 10px;
+                background-color: #343a40;
+                border-radius: 5px;
+                text-align: center;
+            }
+
+            .side-item {
+                margin: 10px;
+                
+                a {
+                    text-decoration: none;
+                }
+
+                .card-body {
+                    background-color: #f8f9fa;
+                    transition: all 0.5s ease;
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+                    &:hover {
+                        color: #fff;
+                        background-color: #343a40;
+                    }
+                }
+            }
+
+            .side-author {
+                .author {
+                    font-size: 0.75em;
+                }
+
+                .avatar {
+                    height: 2.5rem;
+                    width: 2.5rem;
+                    position: relative;
+                    display: inline-block !important;
+
+                    .avatar-img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
+
+    main#singlepost {
+        .card {
+            height: 100px;
+            background-color: red;
+        }
+
+        .main-area {
+            height: 100px;
+            background-color: blue;
+        }
+
+        .side-area {
+            height: 100px;
+            background-color: green;
+        }
+    }
+</style>
+@endpush
+
+
+@section('content')
 @include('sections.header')
 <main id="articles">
     <section class="position-relative">
