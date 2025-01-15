@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     protected $table = 'Team';
-    protected $fillable = ['name', 'position', 'image'];
+    protected $fillable = ['name', 'position', 'description', 'image_path'];
 }

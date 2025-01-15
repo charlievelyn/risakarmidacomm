@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('Admin1_Password'),
             'is_admin' => 1,
+            'image_path' => 'storage\asset\misc\author_not_found.png'
         ]);
     }
 }

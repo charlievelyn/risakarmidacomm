@@ -393,26 +393,6 @@ section#banner-section {
     // }
 }
 
-section#clients-section {
-    .logo-grid {
-        display: grid;
-        justify-content: space-between;
-        width: 100%;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        grid-gap: 2vw;
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            height: 200px;
-            img {
-                width: 100%;
-                object-fit: scale-down;
-            }
-        }
-    }
-}
-
 /* Footer Area */
 .footer-area {
     color: #fff;

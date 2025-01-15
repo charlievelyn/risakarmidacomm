@@ -12,7 +12,7 @@
         @foreach ($banners as $key => $banner)
         <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
             <div class="banner-container">
-                <img src="{{ asset('storage/asset/banners/' . $banner['image']) }}" class="banner-image" alt="">
+                <img src="{{ $banner['image_path'] }}" class="banner-image" alt="">
                 <div class="carousel-caption">
                     <h1>{{$banner['title']}}</h1>
                     {{-- <p>{{$banner['description']}}</p> --}}

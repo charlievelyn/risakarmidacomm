@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
 use App\Models\Article;
+use App\Models\User;
 
 class ArticleController extends Controller
 {
@@ -68,6 +69,10 @@ class ArticleController extends Controller
             $article->description = $request->input('description');
             $article->author = Auth::user()->name;
 
+            $author_image_path = User::where('name', $article->author)->firstOrFail();
+            // dd($author_image_path);
+            $article->author_image = $author_image_path->image_path;
+
             // Attempt to save the article to the database
             $saved = $article->save();
 
@@ -78,6 +83,7 @@ class ArticleController extends Controller
             else {
                 return response()->json(['message' => 'Failed to save article'], 500);
             }
+            
         } catch (QueryException $e) {
             // Handle database query exceptions
             return response()->json(['message' => 'Database error: ' . $e->getMessage()], 500);

@@ -14,21 +14,21 @@ class InitialRecordsSeeder extends Seeder
     public function run(): void
     {
         DB::table('banner')->insert([
-            ['title' => 'Communication Training', 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis rem ipsa cumque assumenda voluptatibus. Laudantium!', 'image' => '4.jpg'],
-            ['title' => 'Content Creative Workshop', 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis rem ipsa cumque assumenda voluptatibus. Laudantium!', 'image' => '8.jpg'],
-            ['title' => 'Outbond & Team Building', 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis rem ipsa cumque assumenda voluptatibus. Laudantium!', 'image' => '10.jpg'],
-            ['title' => 'Photo & Video Documentation', 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis rem ipsa cumque assumenda voluptatibus. Laudantium!', 'image' => '3.jpg'],
-            ['title' => 'Event & Talkshow', 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis rem ipsa cumque assumenda voluptatibus. Laudantium!', 'image' => '9.jpg']
+            ['title' => 'Communication Training', 'description' => 'No Description', 'image_path' => 'storage/asset/banners/20250113_160706_communication.jpg'],
+            ['title' => 'Content Creative Workshop', 'description' => 'No Description', 'image_path' => 'storage/asset/banners/20250113_160751_content.jpg'],
+            ['title' => 'Outbond & Team Building', 'description' => 'No Description', 'image_path' => 'storage/asset/banners/20250113_160826_outbond.jpg'],
+            ['title' => 'Photo & Video Documentation', 'description' => 'No Description', 'image_path' => 'storage/asset/banners/20250113_160847_photo.jpg'],
+            ['title' => 'Event & Talkshow', 'description' => 'No Description', 'image_path' => 'storage/asset/banners/20250113_160920_event.jpg']
         ]);
 
         DB::table('team')->insert([
-            ['name' => 'Risa Karmida, M.A.', 'position' => 'Trainer', 'image' => 'risa_karmida.jpeg'],
-            ['name' => 'Avie Kusnadi, S.I.Kom', 'position' => 'Trainer', 'image' => 'avie_kusnadi.jpeg'],
-            ['name' => 'Zayn Asyari, M.I.Kom', 'position' => 'Trainer', 'image' => 'zayn_asyari.jpeg'],
-            ['name' => 'Nur Hidayah Perwitasari', 'position' => 'Marketing & Branding', 'image' => 'nur_hidayah_perwitasari.jpeg'],
-            ['name' => 'Risty', 'position' => 'Marketing & Branding', 'image' => 'risty_baitul.jpeg'],
-            ['name' => 'Derwin Natanael', 'position' => 'Marketing & Branding', 'image' => 'derwin_natanael.jpeg'],
-            ['name' => 'Reza', 'position' => 'Marketing & Branding', 'image' => 'reza.jpeg']
+            ['name' => 'Risa Karmida, M.A.', 'position' => 'Trainer', 'image_path' => 'storage/asset/teams/20250115_042655_risa.jpeg'],
+            ['name' => 'Avie Kusnadi, S.I.Kom', 'position' => 'Trainer', 'image_path' => 'storage/asset/teams/20250115_042854_avie.jpeg'],
+            ['name' => 'Zayn Asyari, M.I.Kom', 'position' => 'Trainer', 'image_path' => 'storage/asset/teams/20250115_043000_zayn.jpeg'],
+            ['name' => 'Nur Hidayah Perwitasari', 'position' => 'Marketing & Branding', 'image_path' => 'storage/asset/teams/20250115_043033_nur.jpeg'],
+            ['name' => 'Risty', 'position' => 'Marketing & Branding', 'image_path' => 'storage/asset/teams/20250115_043110_risty.jpeg'],
+            ['name' => 'Derwin Natanael', 'position' => 'Marketing & Branding', 'image_path' => 'storage/asset/teams/20250115_043143_derwin.jpeg'],
+            ['name' => 'Reza', 'position' => 'Marketing & Branding', 'image_path' => 'storage/asset/teams/20250115_043202_reza.jpeg']
         ]);
 
         DB::table('training')->insert([
@@ -45,18 +45,18 @@ class InitialRecordsSeeder extends Seeder
         ]);
 
         DB::table('client')->insert([
-            ['name' => 'Software Seni', 'image' => 'software_seni.png'],
-            ['name' => 'Jogja Air Crew', 'image' => 'jogja_air_crew.png'],
-            ['name' => 'Polda DIY', 'image' => 'polda_diy.png'],
-            ['name' => 'Fakultas Hukum UGM', 'image' => 'fakultas_hukum_ugm.png'],
-            ['name' => 'Fakultas Kedokteran, Kesehatan Masyarakat & Keperawaatan UGM', 'image' => 'fakultas_kedokteran_kesehatan_masyarakat_keperawaatan_ugm.png'],
-            ['name' => 'Platinum Hotel', 'image' => 'platinum_hotel.png'],
-            ['name' => 'Grand Keisha Hotel', 'image' => 'grand_keisha_hotel.png'],
-            ['name' => 'BKN Regional 1', 'image' => 'bkn_regional_1.png'],
-            ['name' => 'InaVoice', 'image' => 'inavoice.png'],
-            ['name' => 'ASL Logistik (Artalapan Strategi Logistik)', 'image' => 'asl_logistik_artalapan_strategi_logistik.png'],
-            ['name' => 'LPP Agro', 'image' => 'lpp_agro.png'],
-            ['name' => 'Beri Jalan', 'image' => 'beri_jalan.png'],
+            ['name' => 'Software Seni', 'image_path' => 'storage/asset/clients/20250115_044313_software.png'],
+            ['name' => 'Jogja Air Crew', 'image_pathimage_path' => 'storage/asset/clients/20250115_044341_jogja.png'],
+            ['name' => 'Polda DIY', 'image_path' => 'storage/asset/clients/20250115_044355_polda.png'],
+            ['name' => 'Fakultas Hukum UGM', 'image_path' => 'storage/asset/clients/20250115_044410_fakultas.png'],
+            ['name' => 'Fakultas Kedokteran, Kesehatan Masyarakat & Keperawaatan UGM', 'image_path' => 'storage/asset/clients/20250115_044433_fakultas.png'],
+            ['name' => 'Platinum Hotel', 'image_path' => 'storage/asset/clients/20250115_044451_platinum.png'],
+            ['name' => 'Grand Keisha Hotel', 'image_path' => 'storage/asset/clients/20250115_044505_grand.png'],
+            ['name' => 'BKN Regional 1', 'image_path' => 'storage/asset/clients/20250115_044519_bkn.png'],
+            ['name' => 'InaVoice', 'image_path' => 'storage/asset/clients/20250115_044530_inavoice.png'],
+            ['name' => 'ASL Logistik (Artalapan Strategi Logistik)', 'image_path' => 'storage/asset/clients/20250115_044538_asl.png'],
+            ['name' => 'LPP Agro', 'image_path' => 'storage/asset/clients/20250115_044550_lpp.png'],
+            ['name' => 'Beri Jalan', 'image_path' => 'storage/asset/clients/20250115_044600_beri.png'],
         ]);
 
         DB::table('value')->insert([

@@ -1,6 +1,7 @@
 @extends('components.profile.dashboard')
 
 @push('styles')
+<link rel="stylesheet" href="{{ url('ckeditor5/ckeditor5.css') }}">
 <style>
     #articleModal  img {
         max-width: 100%;
@@ -114,16 +115,99 @@
 
 
 @push('scripts')
-<script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
+{{-- <script src="{{ url('ckeditor5/browser/ckeditor5.umd.js') }}"></script> --}}
+<script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+
 <script>
     $(document).ready(function () {
+        // let editorInstance;
+        // ClassicEditor
+        //     .create(document.querySelector('#description'), {
+        //         extraPlugins: [CustomUploadAdapterPlugin],
+        //         toolbar: ['imageUpload', '|', 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
+        //         image: {
+        //             toolbar: ['imageTextAlternative', 'imageStyle:full', 'imageStyle:side']
+        //         }
+        //     })
+        //     .then(editor => {
+        //         editorInstance = editor;
+        //     })
+        //     .catch(error => console.error(error));
+
+        // function CustomUploadAdapterPlugin(editor) {
+        //     editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+        //         return new MyUploadAdapter(loader);
+        //     };
+        // }
+
+        // class MyUploadAdapter {
+        //     constructor(loader) {
+        //         this.loader = loader;
+        //     }
+
+        //     upload() {
+        //         return new Promise((resolve, reject) => {
+        //             const data = new FormData();
+        //             this.loader.file.then((file) => {
+        //                 data.append('upload', file);
+        //                 data.append('_token', '{{ csrf_token() }}');
+
+        //                 $.ajax({
+        //                     url: '/article/upload',
+        //                     type: 'POST',
+        //                     data: data,
+        //                     processData: false,
+        //                     contentType: false,
+        //                     success: function(response) {
+        //                         resolve({
+        //                             default: response.url
+        //                         });
+        //                     },
+        //                     error: function(error) {
+        //                         reject(error);
+        //                     }
+        //                 });
+        //             });
+        //         });
+        //     }
+
+        //     abort() {
+        //         // Handle abort
+        //     }
+        // }
+
+
         let editorInstance;
+
         ClassicEditor
             .create(document.querySelector('#description'), {
                 extraPlugins: [CustomUploadAdapterPlugin],
-                toolbar: ['imageUpload', '|', 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
+                toolbar: [
+                    'imageUpload', '|', 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote',
+                    '|', 'imageTextAlternative', 'imageStyle:full', 'imageStyle:side', 'resizeImage', 'toggleImageCaption', 'imageTextAlternative', 'ckboxImageEdit'
+                ],
                 image: {
-                    toolbar: ['imageTextAlternative', 'imageStyle:full', 'imageStyle:side']
+                    toolbar: [
+                        'imageTextAlternative', 'imageStyle:full', 'imageStyle:side', 'resizeImage:original', 'resizeImage:50', 'resizeImage:75'
+                    ],
+                    resizeOptions: [
+                        {
+                            name: 'resizeImage:original',
+                            value: null,
+                            label: 'Original'
+                        },
+                        {
+                            name: 'resizeImage:50',
+                            value: '50',
+                            label: '50%'
+                        },
+                        {
+                            name: 'resizeImage:75',
+                            value: '75',
+                            label: '75%'
+                        }
+                    ],
+                    resizeUnit: '%'
                 }
             })
             .then(editor => {
@@ -131,6 +215,7 @@
             })
             .catch(error => console.error(error));
 
+        // CustomUploadAdapterPlugin to handle image uploads
         function CustomUploadAdapterPlugin(editor) {
             editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                 return new MyUploadAdapter(loader);

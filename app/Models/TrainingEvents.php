@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class TrainingEvents extends Model
 {
     protected $table = 'training_events';
-    protected $fillable = ['path', 'title'];
+    protected $fillable = ['path', 'title', 'description'];
 }

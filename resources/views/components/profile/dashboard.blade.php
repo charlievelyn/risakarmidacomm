@@ -81,15 +81,15 @@
                 <a href="{{ route('admin.listuser') }}" class="{{ request()->is('admin/listuser') ? 'active' : '' }}">
                     <i class="bi bi-people-fill"></i> Admin List
                 </a>
-                {{-- <a href="{{ route('admin.edit.banner') }}" class="{{ request()->is('admin/edit-banner') ? 'active' : '' }}">
+                <a href="{{ route('banners.listbanner') }}" class="{{ request()->is('banners/listbanner') ? 'active' : '' }}">
                     <i class="bi bi-image-fill"></i> Edit Banner
-                </a> --}}
-                {{-- <a href="{{ route('admin.edit.team') }}" class="{{ request()->is('admin/edit-team') ? 'active' : '' }}">
+                </a>
+                <a href="{{ route('team.listteam') }}" class="{{ request()->is('team/listteam') ? 'active' : '' }}">
                     <i class="bi bi-people-fill"></i> Edit Team
-                </a> --}}
-                {{-- <a href="{{ route('admin.edit.client') }}" class="{{ request()->is('admin/edit-client') ? 'active' : '' }}">
+                </a>
+                <a href="{{ route('clients.listclient') }}" class="{{ request()->is('clients/listclient') ? 'active' : '' }}">
                     <i class="bi bi-person-square"></i> Edit Client
-                </a> --}}
+                </a>
                 <a href="{{ route('trainingevents.listevents') }}" class="{{ request()->is('trainingevents/listevents') ? 'active' : '' }}">
                     <i class="bi bi-calendar-event-fill"></i> Edit Training Event
                 </a>
@@ -112,6 +112,7 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+    
     @stack('scripts')
 </body>
 </html>

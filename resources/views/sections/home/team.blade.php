@@ -9,13 +9,13 @@
             <div class="row content">
                 <div id="teamCarousel" class="custom-team-carousel">
                     <button class="carousel-control-left" id="btnLeft">
-                        <span>&lt;</span>
+                        <i class="lni lni-chevron-left"></i>
                     </button>
                     <div class="custom-team-carousel-inner">
                         <!-- Carousel items will be dynamically added here -->
                     </div>
                     <button class="carousel-control-right" id="btnRight">
-                        <span>&gt;</span>
+                        <i class="lni lni-chevron-right"></i>
                     </button>
                 </div>
             </div>
@@ -29,8 +29,8 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-    background-color: #f8f9fa;
-    padding: 20px 0;
+    padding: 0px;
+    margin-bottom: 30px;
     display: flex;
     align-items: center;
 }
@@ -73,7 +73,6 @@
 /* Button styles */
 .carousel-control-left,
 .carousel-control-right {
-    background-color: rgba(0, 0, 0, 0.5);
     border: none;
     color: #fff;
     font-size: 2rem;
@@ -84,6 +83,22 @@
     z-index: 10;
 }
 
+.carousel-control-left,
+.carousel-control-right {
+    background-color: #333; /* Coral background */
+    color: white; /* White icon color */
+    border: none; /* Remove border */
+    border-radius: 50%; /* Make buttons circular */
+    width: 50px; /* Button width */
+    height: 50px; /* Button height */
+    display: flex; /* Center content */
+    align-items: center; /* Center content */
+    justify-content: center; /* Center content */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    font-size: 24px; /* Increase icon size */
+}
+
 .carousel-control-left {
     margin-right: 10px;
 }
@@ -91,6 +106,13 @@
 .carousel-control-right {
     margin-left: 10px;
 }
+
+.carousel-control-left:hover,
+.carousel-control-right:hover {
+    background-color: #ff6347; /* Darker coral on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
 </style>
 
 <script>
@@ -108,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
         itemDiv.classList.add('custom-team-carousel-item');
 
         const img = document.createElement('img');
-        img.src = `/storage/asset/teams/${member.image}`;
+        img.src = member.image_path;
         img.alt = member.name;
 
         const alignDiv = document.createElement('div');

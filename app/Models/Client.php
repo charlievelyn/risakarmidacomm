@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     protected $table = 'Client';
-    protected $fillable = ['name', 'image'];
+    protected $fillable = ['name', 'image_path'];
 }

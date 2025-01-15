@@ -190,7 +190,7 @@
                                     <h2>Author</h2>
                                     <div class="d-flex align-items-center position-relative">
                                         <div class="avatar avatar-xs">
-                                            <img class="avatar-img rounded-circle" src="{{ asset('storage/asset/teams/risa_karmida.jpeg') }}" alt="avatar">
+                                            <img class="avatar-img rounded-circle" src="{{ asset($main_article->author_image) }}" alt="avatar">
                                         </div>
                                         <div>
                                             <span class="ms-3">{{ $main_article->author }}</span>
@@ -204,9 +204,9 @@
                         <div class="d-flex justify-content-center other-article">
                             <div class="col-lg-6 other-article-container">
                                 <div class="col-lg-12">
-                                    <a href="{{ route('articles', ['articleId' => $previous_article->id]) }}">
+                                    <a href="{{ route('articles.show', ['articleId' => $previous_article->id]) }}">
                                         <div class="col-lg-6 d-flex justify-content-center previous-article">
-                                            <div class="col-lg-2 justify-content-center align-items-center text-end d-flex mx-3 border border-dark main-article-arrow">
+                                            <div class="col-lg-2 justify-content-center align-items-center text-end d-flex mx-3 border border-light rounded-3 main-article-arrow">
                                                 <i class="fas fa-chevron-left fa-3x align-self-center"></i>
                                             </div>
                                             <div class="col-lg-10 text-start">
@@ -219,13 +219,13 @@
                             </div>
                             <div class="col-lg-6 other-article-container">
                                 <div class="col-lg-12">
-                                    <a href="{{ route('articles', ['articleId' => $next_article->id]) }}" class="d-flex justify-content-end">   
+                                    <a href="{{ route('articles.show', ['articleId' => $next_article->id]) }}" class="d-flex justify-content-end">   
                                         <div class="col-lg-6 d-flex justify-content-center next-article">
                                             <div class="col-lg-10 text-end">
                                                 <p>Next Article</p>
                                                 <h5>{{ $next_article->title }}</h5><br/>
                                             </div>
-                                            <div class="col-lg-2 justify-content-center align-items-center text-end d-flex mx-3 border border-dark main-article-arrow">
+                                            <div class="col-lg-2 justify-content-center align-items-center text-end d-flex mx-3 border border-light rounded-3 main-article-arrow">
                                                 <i class="fas fa-chevron-right fa-3x align-self-center"></i>
                                             </div>
                                         </div>
@@ -247,7 +247,7 @@
                                             <h6 class="card-title">{{ $article->title }}</h6>
                                             <div class="d-flex align-items-center position-relative side-author">
                                                 <div class="avatar avatar-xs">
-                                                    <img class="avatar-img rounded-circle" src="{{ asset('storage/asset/teams/risa_karmida.jpeg') }}" alt="avatar">
+                                                    <img class="avatar-img rounded-circle" src="{{ asset($article->author_image) }}" alt="avatar">
                                                 </div>
                                                 <span class="ms-3"><p class="author">{{ $article->author }} | {{ $article->created_at->format('M d, Y') }}</p></span>
                                             </div>

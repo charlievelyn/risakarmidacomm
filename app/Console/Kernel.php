@@ -13,8 +13,13 @@ class Kernel extends ConsoleKernel
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
+    protected $commands = [
+        \App\Console\Commands\GenerateSitemap::class,
+    ];
+    
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('sitemap:generate')->daily();
         if (config('app.is_demo')){
             $schedule->command('migrate:fresh --seed')->everyFifteenMinutes();
         }

@@ -1,13 +1,18 @@
 @extends('layouts.layout')
 
+@push('styles')
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css"/>
+@endpush
+
 @section('preload')
-  @php
+  {{-- @php
       $imageFolder = public_path('storage/asset/teams'); // Change 'images' to your folder name
       $imageFiles = glob($imageFolder . '/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
-  @endphp
+  @endphp --}}
 
-  @foreach ($imageFiles as $imageFile)
-      <link rel="preload" href="{{ asset($imageFile) }}" as="image">
+  @foreach($teamMembers as $member)
+      <link rel="preload" href="{{ asset($member['image_path']) }}" as="image">
   @endforeach
 @endsection
 
@@ -21,7 +26,7 @@
         <div class="slider-nav">
           @foreach($teamMembers as $member)
             <div class="slider-image">
-              <img src="{{ asset('storage/asset/teams/' . $member['image']) }}" class="d-block w-100" alt="{{ $member['name'] }}" />
+              <img src="{{ asset($member['image_path']) }}" class="d-block w-100" alt="{{ $member['name'] }}" />
             </div>
           @endforeach
         </div>
@@ -33,10 +38,10 @@
       <div class="col-lg-12">
         <div class="slider-description">
           @foreach($teamMembers as $member)
-          <div class="member" style="background-image: url('{{ asset('storage/asset/teams/' . $member['image']) }}'); background-color: rgba(255, 255, 255, 0.5); background-position: center top; background-size: 75%;">
+          <div class="member" style="background-image: url('{{ asset($member['image_path']) }}'); background-color: rgba(255, 255, 255, 0.5); background-position: center top; background-size: 75%;">
             <div class="overlay">
               <div class="left-image">
-                <img src="{{ asset('storage/asset/teams/' . $member['image']) }}" alt="{{ $member['name'] }}" />
+                <img src="{{ asset($member['image_path']) }}" alt="{{ $member['name'] }}" />
               </div>
               <div class="content">
                 <h1>{{ $member['name'] }}</h1>
@@ -55,7 +60,9 @@
 @include('sections.footer')
 @endsection
 
-@section('script')
+@push('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
 <script>
   $(document).ready(function(){
     // Slick Slider
@@ -99,4 +106,4 @@
       });
   });
 </script>
-@endsection
+@endpush

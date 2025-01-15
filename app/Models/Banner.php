@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Banner extends Model
 {
     protected $table = 'Banner';
-    protected $fillable = ['title', 'description', 'image'];
+    protected $fillable = ['title', 'description', 'image_path'];
 }
