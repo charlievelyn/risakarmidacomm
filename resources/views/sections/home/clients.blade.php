@@ -10,8 +10,8 @@
                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         @php
-                            // Divide the clients into two slides
-                            $slides = collect($clients)->pluck('image_path')->chunk(8);
+                            // Divide the clients into slides, 3 items per slide
+                            $slides = collect($clients)->pluck('image_path')->chunk(3);
                         @endphp
                     
                         @foreach ($slides as $index => $slide)
@@ -50,9 +50,9 @@
         display: grid;
         justify-content: space-between;
         width: 100%;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        grid-gap: 2vw;
+        grid-template-columns: repeat(3, 1fr); /* Change to 3 items per row */
+        grid-template-rows: auto;
+        grid-gap: 3vw; /* Increase the gap for larger divs */
         padding-bottom: 30px;
     }
     .logo-container {
@@ -60,13 +60,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 200px;
+        height: 250px; /* Increase height */
         border-radius: 20px; /* Adjust this value to make the corners more or less rounded */ 
-        padding: 10px; /* Add some padding if needed */
+        padding: 15px; /* Add some padding if needed */
     }
     .logo-container img {
         width: 100%;
-        padding: 50px;
+        padding: 20px; /* Adjust padding for larger container */
         object-fit: scale-down;
     }
     .carousel-control-prev, .carousel-control-next {

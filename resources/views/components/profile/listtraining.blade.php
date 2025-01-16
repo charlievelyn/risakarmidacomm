@@ -52,12 +52,16 @@
                             <label for="title">Enter Title for All Images</label>
                             <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title" required>
                         </div>
+                        <div class="form-group">
+                            <label for="description">Enter Title for All Images</label>
+                            <input type="text" name="description" class="form-control" id="description" placeholder="Enter Description" required>
+                        </div>
                         <button type="submit" class="btn btn-primary" id="uploadButton" disabled>Upload</button>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
     
     <!-- Articles Table -->
     <div id="articles">
@@ -65,6 +69,7 @@
             <thead>
                 <tr>
                     <th>Title</th>
+                    <th>Description</th>
                     <th>Images</th>
                     <th>Action</th>
                 </tr>
@@ -73,6 +78,7 @@
                 @foreach($trainingEvents as $training)
                     <tr class="article" data-id="{{ $training->id }}">
                         <td>{{ $training->title }}</td>
+                        <td>{{ $training->description }}</td>
                         <td class="image-list" data-id="{{ $training->id }}"></td>
                         <td>
                             <form action="{{ route('trainingevents.delete', $training->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this training event?');">

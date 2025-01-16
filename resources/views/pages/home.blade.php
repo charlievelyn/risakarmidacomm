@@ -1,7 +1,6 @@
 @extends('layouts.layout')
 
 @section('content')
-<button onclick="window.location.href='{{ route('pintuGerbang') }}'">Login</button>
 @include('sections.header')
 
 <main>
@@ -47,15 +46,15 @@
     checkReveal();
 
     // Whatsapp transition
-    $("#floating").on("transitionend", function(event) {
-        if ($(this).width() >= 300 && event.originalEvent.propertyName === "width") {
-        $(this).prepend("<h1>Contact Us</h1>");
-        }
-    });
+    // $("#floating").on("transitionend", function(event) {
+    //     if ($(this).width() >= 300 && event.originalEvent.propertyName === "width") {
+    //     $(this).prepend("<h1>Contact Us</h1>");
+    //     }
+    // });
 
-    $("#floating").mouseleave(function() {
-        $(this).find("h1").remove();
-    });
+    // $("#floating").mouseleave(function() {
+    //     $(this).find("h1").remove();
+    // });
 
     $(window).scroll(function() {
         let scrollTop = $(this).scrollTop();

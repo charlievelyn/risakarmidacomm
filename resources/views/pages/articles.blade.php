@@ -282,9 +282,11 @@
                         </nav>
                     </div>
                 @else
+                <div class="row">
                     <div class="alert alert-warning text-center" style="background-color: #FFFDD0; width: 100%; margin: 20px auto;">
                         No article available
                     </div>
+                </div>
                 @endif
             </div>
         </div>

@@ -41,6 +41,7 @@ class TrainingEventsController extends Controller
         if ($request->hasfile('images'))
         {
             $title = $request->title;
+            $description = $request->description;
             $titleFirstWord = explode(' ', trim($title))[0];
             $timestamp = now()->format('Ymd_His');
             $folderName = "{$timestamp}_{$titleFirstWord}";
@@ -58,7 +59,7 @@ class TrainingEventsController extends Controller
             }
             
             // Save path and title to database
-            TrainingEvents::create(['path' => "storage/asset/trainings/{$folderName}", 'title' => $title]);
+            TrainingEvents::create(['path' => "storage/asset/trainings/{$folderName}", 'title' => $title, 'description' => $description]);
         }
     
         return back()->with('success', 'Training Events uploaded successfully.');

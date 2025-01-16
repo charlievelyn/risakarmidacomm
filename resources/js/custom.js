@@ -26,6 +26,16 @@
   };
 })();
 
+$("#floating").on("transitionend", function(event) {
+  if ($(this).width() >= 300 && event.originalEvent.propertyName === "width") {
+  $(this).prepend("<h1>Contact Us</h1>");
+  }
+});
+
+$("#floating").mouseleave(function() {
+  $(this).find("h1").remove();
+});
+
 if(document.getElementById('alert')) {
     let alertDiv = document.getElementById('alert')
     setTimeout(() => {

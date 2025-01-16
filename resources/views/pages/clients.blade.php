@@ -7,6 +7,7 @@
         .clients-section {
             background-color: #f9f9f9;
             padding: 60px 0;
+            height: 1000px;
         }
 
         .clients-section .section-header {
@@ -16,11 +17,11 @@
         }
 
         .clients-section .logo-container {
-            background: #b17373; /* Subtle gray background for visibility */
+            background: rgba(170, 115, 70, 0.171); /* Subtle gray background for visibility */
             border: 1px solid #ddd; /* Thin border for contrast */
             border-radius: 8px;
             padding: 20px;
-            height: 180px; /* Adjust the height of the logo container */
+            height: 500px; /* Increased height of the logo container */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -28,7 +29,7 @@
         }
 
         .clients-section .logo-container img {
-            max-height: 140px; /* Ensure the logo fits within the container */
+            max-height: 200px; /* Adjust the max height of the logo */
             max-width: 100%;
             object-fit: contain; /* Keep the aspect ratio intact */
         }
@@ -40,9 +41,15 @@
 
         .clients-section .carousel-control-prev-icon,
         .clients-section .carousel-control-next-icon {
-            background-color: #333;
+            background-color: #ddd;
             border-radius: 50%;
             padding: 10px;
+        }
+        .clients-section .carousel-control-next-icon {
+            transform: translateX(+150%);
+        }
+        .clients-section .carousel-control-prev-icon {
+            transform: translateX(-150%);
         }
 
         .clients-section .carousel-indicators [data-bs-target] {
@@ -69,15 +76,15 @@
             <div id="clientsCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     @php
-                        // Divide the clients into slides with a max of 4 per slide
-                        $slides = collect($clients)->pluck('image_path')->chunk(4);
+                        // Divide the clients into slides with a max of 3 per slide
+                        $slides = collect($clients)->pluck('image_path')->chunk(3);
                     @endphp
 
                     @foreach ($slides as $index => $slide)
                         <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                             <div class="row justify-content-center g-4">
                                 @foreach ($slide as $image)
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-center">
+                                    <div class="col-lg-4 col-md-6 col-sm-12 text-center">
                                         <div class="logo-container">
                                             <img src="{{ asset($image) }}" class="img-fluid" alt="Client Logo">
                                         </div>
